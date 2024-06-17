@@ -8,7 +8,6 @@ import chroma from "chroma-js";
 export default function Home() {
   const [generateColor, setGenerateColor] = useState("");
   const [fontColor, setFontColor] = useState("#2d2d2d");
-  // const [lastValidFontColor, setLastValidFontColor] = useState("#FFFFFF");
 
   const [colorObject, setColorObject] = useState({
     hover: "",
@@ -105,88 +104,103 @@ export default function Home() {
       {!!colorObject.default && chroma.valid(colorObject.fontColor) && (
         <div className={styles.colorTest}>
           <div className={styles.titles}>
-            <p>Color effect</p>
-            <div
-              className={styles.demoContainer}
-              style={{ background: colorObject.hover }}
-            >
-              <span className={styles.colorCode} style={{ color: fontColor }}>
-                Hover / Focus
-              </span>
+            <p>Color Effect and Accessibility Table</p>
+            <div className={styles.tableContainer}>
+              <table className={styles.colorTable}>
+                <thead>
+                  <tr>
+                    <th>Color Effect</th>
+                    <th>Background Color</th>
+                    <th>Color Code</th>
+                    <th>AA Compliance</th>
+                    <th>AAA Compliance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Hover / Focus</td>
+                    <td style={{ background: colorObject.hover }}>
+                      <span
+                        className={styles.colorCode}
+                        style={{ color: fontColor }}
+                      >
+                        Hover / Focus
+                      </span>
+                    </td>
+                    <td>{colorObject.hover}</td>
+                    <td>
+                      {isAccessible(
+                        calculateContrast(colorObject.hover, fontColor)
+                      )
+                        ? "Pass"
+                        : "Fail"}
+                    </td>
+                    <td>
+                      {isAccessible(
+                        calculateContrast(colorObject.hover, fontColor),
+                        "AAA"
+                      )
+                        ? "Pass"
+                        : "Fail"}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Default</td>
+                    <td style={{ background: colorObject.default }}>
+                      <span
+                        className={styles.colorCode}
+                        style={{ color: fontColor }}
+                      >
+                        Default
+                      </span>
+                    </td>
+                    <td>{colorObject.default}</td>
+                    <td>
+                      {isAccessible(
+                        calculateContrast(colorObject.default, fontColor)
+                      )
+                        ? "Pass"
+                        : "Fail"}
+                    </td>
+                    <td>
+                      {isAccessible(
+                        calculateContrast(colorObject.default, fontColor),
+                        "AAA"
+                      )
+                        ? "Pass"
+                        : "Fail"}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Active</td>
+                    <td style={{ background: colorObject.active }}>
+                      <span
+                        className={styles.colorCode}
+                        style={{ color: fontColor }}
+                      >
+                        Active
+                      </span>
+                    </td>
+                    <td>{colorObject.active}</td>
+                    <td>
+                      {isAccessible(
+                        calculateContrast(colorObject.active, fontColor)
+                      )
+                        ? "Pass"
+                        : "Fail"}
+                    </td>
+                    <td>
+                      {isAccessible(
+                        calculateContrast(colorObject.active, fontColor),
+                        "AAA"
+                      )
+                        ? "Pass"
+                        : "Fail"}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div
-              className={styles.demoContainer}
-              style={{ background: colorObject.default }}
-            >
-              <span className={styles.colorCode} style={{ color: fontColor }}>
-                Default
-              </span>
-            </div>
-            <div
-              className={styles.demoContainer}
-              style={{ background: colorObject.active }}
-            >
-              <span className={styles.colorCode} style={{ color: fontColor }}>
-                Active
-              </span>
-            </div>
-          </div>
-          <div className={styles.titles}>
-            <p>Color code</p>
-            <div className={styles.demoContainer}>
-              <span className={styles.colorCode}>{colorObject.hover}</span>
-            </div>
-            <div className={styles.demoContainer}>
-              <span className={styles.colorCode}>{colorObject.default}</span>
-            </div>
-            <div className={styles.demoContainer}>
-              <span className={styles.colorCode}>{colorObject.active}</span>
-            </div>
-          </div>
-          <div className={styles.titles}>
-            <p>AA</p>
-            <p>
-              {isAccessible(calculateContrast(colorObject.hover, fontColor))
-                ? "Pass"
-                : "Fail"}
-            </p>
-            <p>
-              {isAccessible(calculateContrast(colorObject.default, fontColor))
-                ? "Pass"
-                : "Fail"}
-            </p>
-            <p>
-              {isAccessible(calculateContrast(colorObject.active, fontColor))
-                ? "Pass"
-                : "Fail"}
-            </p>
-          </div>
-          <div className={styles.titles}>
-            <p>AAA</p>
-            <p>
-              {isAccessible(
-                calculateContrast(colorObject.hover, fontColor),
-                "AAA"
-              )
-                ? "Pass"
-                : "Fail"}
-            </p>
-            <p>
-              {isAccessible(
-                calculateContrast(colorObject.default, fontColor),
-                "AAA"
-              )
-                ? "Pass"
-                : "Fail"}
-            </p>
-            <p>
-              {isAccessible(
-                calculateContrast(colorObject.active, fontColor),
-                "AAA"
-              )
-                ? "Pass"
-                : "Fail"}
-            </p>
           </div>
         </div>
       )}
