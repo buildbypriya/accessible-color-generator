@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Overview
 
-## Getting Started
+Welcome to the Web Color Generator with Accessibility Test! This tool is designed to help developers and designers create and test color schemes for web projects, ensuring they meet accessibility standards.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Dynamic Color Generation: Easily generate and view different color schemes for various states (hover, default, active).
+- Accessibility Testing: Automatically test your color combinations against WCAG AA and AAA standards for color contrast, ensuring your designs are accessible to all users.
+- User-Friendly Interface: Intuitive and responsive design that makes it easy to interact with and visualize different color schemes.
+- Real-Time Feedback: Get immediate feedback on the accessibility compliance of your color choices, helping you make informed design decisions.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Running the Development Server
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`npm run dev`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Build Command
 
-## Learn More
+`npm run build`
 
-To learn more about Next.js, take a look at the following resources:
+## Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Generate Colors: Use the tool to generate colors for different states such as hover, default, and active.
+2. Accessibility Check: The tool will automatically calculate the contrast ratios and indicate whether the color combinations pass AA and AAA accessibility standards.
+3. Adjust as Needed: Modify the colors and re-test until all combinations meet the desired accessibility criteria.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## How It Works
 
-## Deploy on Vercel
+- Color Configuration: The tool takes a color configuration object with properties for hover, default, active, and font color.
+- Contrast Calculation: It calculates the contrast ratio between the background colors and the font color.
+- Accessibility Validation: Using these ratios, the tool validates whether the colors comply with WCAG AA and AAA standards and displays the results.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Contributions are welcome! Please follow these steps to contribute:
+
+1. Fork the repository.
+2. Create a new branch: git checkout -b my-feature-branch
+3. Make your changes and commit them: git commit -m 'Add some feature'
+4. Push to the branch: git push origin my-feature-branch
+5. Submit a pull request.
